@@ -1,3 +1,57 @@
 from django.shortcuts import render
-
+from .models import CarouselItem,Fact,AboutUs,AboutUsContent,Service,Feature,FeatureIcon,Project
+from django.shortcuts import render, get_object_or_404
 # Create your views here.
+def home(request):
+
+    carousel_items = CarouselItem.objects.all()
+    facts = Fact.objects.all().order_by('number')
+    about_data = AboutUs.objects.first()
+    about_content = AboutUsContent.objects.all()
+    services = Service.objects.all()
+    features = Feature.objects.first()
+    feature_icons = FeatureIcon.objects.all()
+    projects = Project.objects.all()
+
+    return render(request, 'index.html', {
+        'carousel_items': carousel_items,
+        'facts': facts,
+        'about_data': about_data,
+        'about_content':about_content,
+        'services': services,
+        'features': features,
+        'feature_icons': feature_icons,
+        'projects': projects,
+        'category_choices': Project.CATEGORY_CHOICES,
+    })
+
+
+def contact(request):
+    services = Service.objects.all()
+    return render(request, 'contact.html', {
+        'services': services
+    })
+
+def service_details(request, id):
+    service = get_object_or_404(Service, id=id)
+    services = Service.objects.all()
+    return render(request, 'service_details.html', {
+        'service': service,
+        'services': services
+    })
+
+def company_details(request):
+    services = Service.objects.all()
+    about_us = AboutUs.objects.first()
+    return render(request, 'company_details.html', {
+        'services': services,
+        'about_us': about_us
+    })
+
+def project_details(request,id):
+    services = Service.objects.all()
+    project = get_object_or_404(Project, id=id)
+    return render(request, 'project_details.html', {
+        'services': services,
+        'project': project,
+    })
