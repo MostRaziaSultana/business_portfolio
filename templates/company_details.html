@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} aboutus_details {% endblock %}
+{% block body %}
+
+
+<div class="container">
+    <p>{{ about_us.description|safe }}</p>
+</div>
+
+
+{% endblock %}
