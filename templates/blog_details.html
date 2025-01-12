@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog_details {% endblock %}
+{% block body %}
+
+
+<div class="container">
+     {{ blog.content|safe }}
+</div>
+
+
+{% endblock %}
