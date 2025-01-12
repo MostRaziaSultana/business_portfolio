@@ -32,7 +32,7 @@ class AboutUs(models.Model):
     title = models.CharField(max_length=255)
     about_image = models.ImageField(upload_to='about_images/', null=True, blank=True)
     brief_details = models.TextField(null=True)
-    description  = RichTextField()
+    content  = RichTextField()
 
     def __str__(self):
         return self.title
@@ -48,7 +48,7 @@ class AboutUsContent(models.Model):
 class Service(models.Model):
     title = models.CharField(max_length=255)
     brief_details = RichTextField(null=True)
-    description = RichTextField()
+    content = RichTextField()
     icon = models.ImageField(upload_to='service_icons/', null=True, blank=True)
 
     def __str__(self):
@@ -84,7 +84,7 @@ class Project(models.Model):
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    description = RichTextField()
+    content = RichTextField()
     image = models.ImageField(upload_to='projects/')
 
     def __str__(self):
@@ -103,6 +103,25 @@ class BusinessInfo(models.Model):
     facebook_link = models.URLField(blank=True, null=True)
     youtube_link = models.URLField(blank=True, null=True)
     linkedin_link = models.URLField(blank=True, null=True)
+    map_embed_location_link = models.TextField(default="")
 
     def __str__(self):
         return "Business Info"
+
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+
+    def __str__(self):
+        return f"Message from {self.name} ({self.email})"
+
+class Blog(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='blogs/', blank=True, null=True)
+    content = RichTextField()
+
+    def __str__(self):
+        return self.title

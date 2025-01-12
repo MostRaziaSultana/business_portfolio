@@ -106,7 +106,7 @@
                             <img class="img-fluid" src="{{ service.icon.url }}" alt="Icon">
                         </div>
                         <h4 class="mb-3">{{ service.title  }}</h4>
-                        <p class="mb-4">{{ service.brief_details }}</p>
+                        <p class="mb-4">{{ service.brief_details|safe }}</p>
                         <a class="btn" href="{% url 'service_details' service.id %}"><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>
                     </div>
                 </div>
@@ -153,47 +153,77 @@
     </div>
     <!-- Feature End -->
 
+<!--&lt;!&ndash; Blogs Start &ndash;&gt;-->
+<!--<div class="container-xxl py-5" id="blogs">-->
+<!--    <div class="container">-->
+<!--        <div class="text-center">-->
+<!--            <div class="bg-primary mb-3 mx-auto" style="width: 40px; height: 2px;"></div>-->
+<!--            <h1 class="display-5 mb-5">Recent Blogs</h1>-->
+<!--        </div>-->
+<!--        <div class="row g-0 blog-row">-->
+<!--            {% for blog in blogs %}-->
+<!--            &lt;!&ndash; Blog Item &ndash;&gt;-->
+<!--               <div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="0.1s">-->
+<!--                    <div class="blog-card card h-100">-->
+<!--                        <div class="image-thumb">-->
+<!--                            &lt;!&ndash; Display Blog Image &ndash;&gt;-->
+<!--                             <a href="{% url 'blog_details' blog.id %}">-->
+<!--                                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid">-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="down-content">-->
+<!--                            &lt;!&ndash; Display Blog Title &ndash;&gt;-->
+<!--                            <h4>-->
+<!--                                <a class="product_name" href="{% url 'blog_details' blog.id %}">{{ blog.title|truncatechars:22 }}</a>-->
+<!--                            </h4>-->
+<!--                            &lt;!&ndash; Display Blog Description or Content Excerpt &ndash;&gt;-->
+<!--                            &lt;!&ndash; <p>{{ blog.content|truncatewords:20 }}</p> &ndash;&gt;-->
+<!--                            <a class="btn" href="{% url 'blog_details' blog.id %}"><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--        {% endfor %}-->
 
-    <!-- Projects Start -->
-    <div class="container-xxl py-5" id="projects">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <div class="bg-primary mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
-                <h1 class="display-5 mb-5">Our Projects</h1>
-            </div>
-            <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="col-12 text-center">
-                    <ul class="list-inline mb-5" id="portfolio-flters">
-                        <li class="mx-2 active" data-filter="*">All</li>
-                          {% for choice in category_choices %}
-                        <li class="mx-2" data-filter=".second">{{ choice.1 }}</li>
-                         {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            <div class="row g-4 portfolio-container">
-                 {% for project in projects %}
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-inner">
-                        <img class="img-fluid w-100" src="{{ project.image.url }}" alt="project-image">
-                        <div class="text-center p-4">
-                            <p class="text-primary mb-2">{{ project.title }}</p>
-                            <h5 class="lh-base mb-0">{{ project.subtitle }}</h5>
-                        </div>
-                        <div class="portfolio-text text-center bg-white p-4">
-                            <p class="text-primary mb-2">{{ project.title }}</p>
-                            <h5 class="lh-base mb-3">{{ project.subtitle }}</h5>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="{{ project.image.url }}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="{% url 'project_details' project.id %}"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Blogs End &ndash;&gt;-->
+
+
+<!-- Blogs Start -->
+<div class="container-xxl py-5" id="blogs">
+    <div class="container">
+        <div class="text-center">
+            <div class="bg-primary mb-3 mx-auto" style="width: 40px; height: 2px;"></div>
+            <h1 class="display-5 mb-5">Recent Blogs</h1>
+        </div>
+        <div class="row g-4">
+            {% for blog in blogs %}
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card card h-100">
+                    <div class="image-thumb">
+                        <!-- Blog Image -->
+                        <a href="{% url 'blog_details' blog.id %}">
+                            <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="down-content">
+                        <h4>
+                            <a class="product_name" href="{% url 'blog_details' blog.id %}">{{ blog.title|truncatechars:22 }}</a>
+                        </h4>
+                        <a class="btn btn-primary" href="{% url 'blog_details' blog.id %}">
+                            <i class="fa fa-arrow-right me-2"></i>Read More
+                        </a>
                     </div>
                 </div>
-            {% endfor %}
             </div>
+            {% endfor %}
         </div>
     </div>
-    <!-- Projects End -->
+</div>
+<!-- Blogs End -->
+
+
+
 
 {% endblock %}
