@@ -126,9 +126,9 @@
                         <div class="bg-primary mb-3" style="width: 60px; height: 2px;"></div>
                         <h1 class="display-5 mb-5">{{features.title}}</h1>
                         <p class="mb-4 pb-2">{{features.description}}</p>
-                        <div class="row g-4">
-                             <div>
-                                 {% for k in feature_icons %}
+                        <div class="row g-4 mb-4 pb-3">
+                            {% for k in feature_icons %}
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="d-flex align-items-center">
                                     <div class="btn-square bg-white rounded-circle" style="width: 64px; height: 64px;">
                                         <img class="img-fluid" src="{{ k.icon.url }}" alt="Icon">
@@ -138,9 +138,10 @@
                                         <h5 class="mb-0">{{ k.highlighted_word }}</h5>
                                     </div>
                                 </div>
-                                 {% endfor %}
                             </div>
+                            {% endfor %}
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">

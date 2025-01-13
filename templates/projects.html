@@ -3,45 +3,73 @@
 {% block title %} Projects {% endblock %}
 {% block body %}
 
-    <!-- Projects Start -->
-    <div class="container-xxl py-5" id="projects">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <div class="bg-primary mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
-                <h1 class="display-5 mb-5">Our Projects</h1>
+
+<div class="container-xxl py-5" id="projects">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <div class="bg-primary mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
+            <h1 class="display-5 mb-5">Our Projects</h1>
+        </div>
+        <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-12 text-center">
+                <ul class="list-inline mb-5" id="portfolio-flters">
+                    <li class="mx-2 active" data-filter="*">All</li>
+                    {% for choice in category_choices %}
+                    <li class="mx-2" data-filter=".{{ choice.0 }}">{{ choice.1 }}</li>
+                    {% endfor %}
+                </ul>
             </div>
-            <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="col-12 text-center">
-                    <ul class="list-inline mb-5" id="portfolio-flters">
-                        <li class="mx-2 active" data-filter="*">All</li>
-                          {% for choice in category_choices %}
-                        <li class="mx-2" data-filter=".second">{{ choice.1 }}</li>
-                         {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            <div class="row g-4 portfolio-container">
-                 {% for project in projects %}
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-inner">
-                        <img class="img-fluid w-100" src="{{ project.image.url }}" alt="project-image">
-                        <div class="text-center p-4">
-                            <p class="text-primary mb-2">{{ project.title }}</p>
-                            <h5 class="lh-base mb-0">{{ project.subtitle }}</h5>
-                        </div>
-                        <div class="portfolio-text text-center bg-white p-4">
-                            <p class="text-primary mb-2">{{ project.title }}</p>
-                            <h5 class="lh-base mb-3">{{ project.subtitle }}</h5>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="{{ project.image.url }}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="{% url 'project_details' project.id %}"><i class="fa fa-link"></i></a>
-                            </div>
+        </div>
+        <div class="row g-4 portfolio-container">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6 portfolio-item {{ project.category|slugify }} wow fadeInUp" data-wow-delay="0.1s">
+                <div class="portfolio-inner">
+                    <img class="img-fluid w-100" src="{{ project.image.url }}" alt="project-image">
+                    <div class="text-center p-4">
+                        <p class="text-primary mb-2">{{ project.title }}</p>
+                        <h5 class="lh-base mb-0">{{ project.subtitle }}</h5>
+                    </div>
+                    <div class="portfolio-text text-center bg-white p-4">
+                        <p class="text-primary mb-2">{{ project.title }}</p>
+                        <h5 class="lh-base mb-3">{{ project.subtitle }}</h5>
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-square btn-primary rounded-circle mx-1" href="{{ project.image.url }}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-square btn-primary rounded-circle mx-1" href="{% url 'project_details' project.id %}"><i class="fa fa-link"></i></a>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
             </div>
+            {% endfor %}
         </div>
     </div>
-    <!-- Projects End -->
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Portfolio Filtering functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const filterButtons = document.querySelectorAll('#portfolio-flters li');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const filterValue = this.getAttribute('data-filter');
+                portfolioItems.forEach(item => {
+                    if (filterValue === '*' || item.classList.contains(filterValue.substring(1))) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
 {% endblock %}
