@@ -1,0 +1,61 @@
+{% extends 'authority_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<div class="bg-light rounded h-100 p-4 shadow-sm">
+    <h6 class="title-custom mb-4">{{ title }}</h6>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- First Row: Title -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <label for="id_title" class="form-label">Service Name</label>
+                {{ form.title|add_class:"form-control" }}
+            </div>
+        </div>
+
+        <!-- Second Row: Service Icon -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="id_icon" class="form-label">Service Icon</label>
+                {{ form.icon|add_class:"form-control" }}
+            </div>
+            <div class="col-md-6">
+                {% if form.instance.icon %}
+                <div class="mt-2">
+                    <p>Current Image:</p>
+                    <img src="{{ form.instance.icon.url }}" style="max-width: 100px;" alt="{{ form.instance.title }}">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Brief Details Section -->
+        <div class="row mb-4">
+                <label for="id_brief_details" class="form-label">Brief Details</label>
+                {{ form.brief_details|add_class:"form-control" }}
+        </div>
+
+        <!-- Content Section -->
+        <div class="row mb-4">
+                <label for="id_content" class="form-label">Content</label>
+                {{ form.content|add_class:"form-control" }}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
+
+<script src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% endblock %}

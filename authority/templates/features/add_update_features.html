@@ -1,0 +1,51 @@
+{% extends 'authority_base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block body %}
+<div class="bg-light rounded h-100 p-4 shadow-sm">
+    <h6 class="mb-4 title-custom">{{ title }}</h6>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <label for="title" class="form-label">Feature Title</label>
+            {{ form.title|add_class:"form-control" }}
+        </div>
+
+        <!-- Image Upload with Preview -->
+        <div class="row mb-4">
+            <!-- Left Column: Image Input -->
+            <div class="col-md-6">
+                <label for="image" class="form-label">Feature Image</label>
+                {{ form.image|add_class:"form-control" }}
+            </div>
+
+            <!-- Right Column: Current Image Preview -->
+            <div class="col-md-6">
+                {% if form.instance.image %}
+                    <div class="mt-2">
+                        <p>Current Image:</p>
+                        <img src="{{ form.instance.image.url }}" alt="{{ form.instance.title }}" class="img-fluid" style="max-width: 100px;">
+                    </div>
+                {% else %}
+                    <div class="mt-2 text-muted">
+                        <p>No image uploaded yet.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="description" class="form-label">Description</label>
+            {{ form.description|add_class:"form-control" }}
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">{{ title }}</button>
+        </div>
+    </form>
+</div>
+{% endblock body %}

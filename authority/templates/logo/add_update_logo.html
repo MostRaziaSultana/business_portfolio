@@ -1,0 +1,52 @@
+{% extends 'authority_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<div class="bg-light rounded h-100 p-4 shadow-sm">
+    <h6 class="mb-4 title-custom">{{ title }}</h6>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Header Logo -->
+        <div class="mb-4">
+            <label for="header_logo" class="form-label">Header Logo</label>
+            {{ form.header_logo|add_class:"form-control" }}
+            {% if form.header_logo.value %}
+                <div class="mt-2">
+                    <img src="{{ form.header_logo.value.url }}" alt="Header Logo" style="width: 100px; max-height: 100px; object-fit: contain;">
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Footer Logo -->
+        <div class="mb-4">
+            <label for="footer_logo" class="form-label">Footer Logo</label>
+            {{ form.footer_logo|add_class:"form-control" }}
+            {% if form.footer_logo.value %}
+                <div class="mt-2">
+                    <img src="{{ form.footer_logo.value.url }}" alt="Footer Logo" style="width: 100px; max-height: 100px; object-fit: contain;">
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Favicon -->
+        <div class="mb-4">
+            <label for="favicon" class="form-label">Favicon</label>
+            {{ form.favicon|add_class:"form-control" }}
+            {% if form.favicon.value %}
+                <div class="mt-2">
+                    <img src="{{ form.favicon.value.url }}" alt="Favicon" style="width: 80; max-height: 80; object-fit: contain;">
+                </div>
+            {% endif %}
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock body %}

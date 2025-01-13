@@ -1,0 +1,53 @@
+{% extends 'authority_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+<div class="bg-light rounded h-100 p-4">
+    <h6 class="title-custom mb-4">{{ title }}</h6>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="about-us-content-details mb-4">
+
+            <!-- First Row with Title and Number -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="title" class="form-label">Title</label>
+                    {{ form.title|add_class:"form-control" }}
+                </div>
+                <div class="col-md-6">
+                    <label for="number" class="form-label">Number</label>
+                    {{ form.number|add_class:"form-control" }}
+                </div>
+            </div>
+
+            <!-- Second Row with Icon (Image Upload) -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="icon" class="form-label">Icon</label>
+                    {{ form.icon|add_class:"form-control" }}
+                </div>
+                <div class="col-md-6">
+                    {% if form.icon.value %}
+                        <label for="current_icon" class="form-label">Current Icon</label>
+                        <div class="current-icon">
+                            <img src="{{ form.icon.value.url }}" alt="Current Icon" style="width: 80; height: 80; object-fit: cover;">
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

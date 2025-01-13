@@ -8,6 +8,7 @@ from ckeditor.fields import RichTextField
 class Logo(models.Model):
     header_logo = models.ImageField(upload_to='logos/header/', blank=True, null=True)
     footer_logo  = models.ImageField(upload_to='logos/footer/', blank=True, null=True)
+    favicon = models.ImageField(upload_to='logos/favicon/', blank=True, null=True)
 
     def __str__(self):
         return f"Header: {self.header_logo } | Footer: {self.footer_logo }"
@@ -70,11 +71,6 @@ class FeatureIcon(models.Model):
     def __str__(self):
         return self.title
 
-def validate_year(value):
-    current_year = date.today().year
-    if value > current_year:
-        raise ValidationError(f"The year {value} cannot be in the future.")
-
 
 class Project(models.Model):
     CATEGORY_CHOICES = [
@@ -83,14 +79,17 @@ class Project(models.Model):
     ]
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES,null=True,blank=True)
     content = RichTextField()
     image = models.ImageField(upload_to='projects/')
 
     def __str__(self):
         return self.title
 
-
+def validate_year(value):
+    current_year = date.today().year
+    if value > current_year:
+        raise ValidationError(f"The year {value} cannot be in the future.")
 class BusinessInfo(models.Model):
     site_name = models.CharField(max_length=255, null=True)
     address = models.TextField()
