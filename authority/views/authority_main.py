@@ -21,7 +21,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 class AdminView(LoginRequiredMixin,AdminPassesTestMixin,TemplateView):
     template_name = 'authority/admin.html'
-    success_url = reverse_lazy('authority:authority_admin'),
     login_url = reverse_lazy('authority:login')
+    success_url = reverse_lazy('authority:authority_admin'),
 
 

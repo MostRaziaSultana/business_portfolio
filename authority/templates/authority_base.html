@@ -108,7 +108,7 @@
                     <!-- Manage Feature Link (Parent Link) -->
                     <a href="#" class="nav-item nav-link" style="display: flex; align-items: center;" data-bs-toggle="collapse" data-bs-target="#feature-collapse" aria-expanded="false" aria-controls="feature-collapse">
                         <i class="fa-solid fa-cogs" style="margin-right: 10px; font-size: 1.2em;"></i>
-                        <span>Feature</span>
+                        <span>Why Choose Us</span>
                           <i class="fa-solid fa-chevron-right ms-auto"></i>
                     </a>
 
@@ -116,11 +116,11 @@
                     <div class="collapse" id="feature-collapse">
                         <a href="{% url 'authority:feature_list' %}" class="nav-item nav-link" style="display: flex; align-items: center; margin-left: 20px;">
                             <i class="fa-solid fa-cogs" style="margin-right: 10px; font-size: 1.2em;"></i>
-                            <span>Feature List</span>
+                            <span>Define</span>
                         </a>
                         <a href="{% url 'authority:feature_icon_list' %}" class="nav-item nav-link" style="display: flex; align-items: center; margin-left: 20px;">
                             <i class="fa-solid fa-icons" style="margin-right: 10px; font-size: 1.2em;"></i>
-                            <span>Feature Icon List</span>
+                            <span>Icons</span>
                         </a>
                     </div>
                     <!-- Manage About Us Link (Parent Link) -->
@@ -142,6 +142,25 @@
                         </a>
                     </div>
 
+<!-- Manage Projects Link (Parent Link) -->
+<a href="#" class="nav-item nav-link" style="display: flex; align-items: center;" data-bs-toggle="collapse" data-bs-target="#manage-projects-collapse" aria-expanded="false" aria-controls="manage-projects-collapse">
+    <i class="fa-solid fa-briefcase" style="margin-right: 10px; font-size: 1.2em;"></i>
+    <span>Projects</span>
+    <i class="fa-solid fa-chevron-right ms-auto"></i>
+</a>
+
+<div class="collapse" id="manage-projects-collapse">
+    <a href="{% url 'authority:category_list' %}" class="nav-item nav-link" style="display: flex; align-items: center; margin-left: 20px;">
+        <i class="fa-solid fa-list-alt" style="margin-right: 10px; font-size: 1.2em;"></i>
+        <span>Project Category</span>
+    </a>
+    <a href="{% url 'authority:project_list' %}" class="nav-item nav-link" style="display: flex; align-items: center; margin-left: 20px;">
+        <i class="fa-solid fa-list" style="margin-right: 10px; font-size: 1.2em;"></i>
+        <span>Project List</span>
+    </a>
+</div>
+
+
                     <!-- Manage Logos Link -->
                     <a href="{% url 'authority:logo_list' %}" class="nav-item nav-link" style="display: flex; align-items: center;">
                         <i class="fa-solid fa-image" style="margin-right: 10px; font-size: 1.2em;"></i>
@@ -151,25 +170,19 @@
                     <!-- Manage Carousel Items Link -->
                     <a href="{% url 'authority:carousel_item_list' %}" class="nav-item nav-link" style="display: flex; align-items: center;">
                         <i class="fa-solid fa-image" style="margin-right: 10px; font-size: 1.2em;"></i>
-                        <span>Manage Carousel</span>
+                        <span>Manage Banner</span>
                     </a>
 
                     <!-- Manage Facts Link -->
                     <a href="{% url 'authority:fact_list' %}" class="nav-item nav-link" style="display: flex; align-items: center;">
                         <i class="fa-solid fa-info-circle" style="margin-right: 10px; font-size: 1.2em;"></i>
-                        <span>Manage Facts</span>
-                    </a>
-
-                    <!-- Manage Projects Link -->
-                    <a href="{% url 'authority:project_list' %}" class="nav-item nav-link" style="display: flex; align-items: center;">
-                        <i class="fa-solid fa-briefcase" style="margin-right: 10px; font-size: 1.2em;"></i>
-                        <span>Manage Projects</span>
+                        <span>Manage Features</span>
                     </a>
 
                     <!-- Manage Contact Messages Link -->
                     <a href="{% url 'authority:contact_message_list' %}" class="nav-item nav-link" style="display: flex; align-items: center;">
                         <i class="fa-solid fa-envelope" style="margin-right: 10px; font-size: 1.2em;"></i>
-                        <span>Manage Messages</span>
+                        <span>Contact Messages</span>
                     </a>
 
                     <!-- Manage Blogs Link -->
