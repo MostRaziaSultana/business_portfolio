@@ -72,7 +72,10 @@
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="d-flex align-items-center">
                                     <div class="btn-square bg-white rounded-circle" style="width: 64px; height: 64px;">
+                                        {% if j.icon %}
                                         <img class="img-fluid" src="{{ j.icon.url }}" alt="Icon">
+                                         {% else %}
+                                        {% endif %}
                                     </div>
                                     <div class="ms-4">
                                         <h2 class="mb-1" data-toggle="counter-up">{{ j.number  }}</h2>

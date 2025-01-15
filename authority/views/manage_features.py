@@ -32,7 +32,7 @@ class FeaturesListView(LoginRequiredMixin, AdminPassesTestMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Features List"
+        context["title"] = "Why choose us List"
         return context
 
 
@@ -40,11 +40,11 @@ class UpdateFeatureView(LoginRequiredMixin, AdminPassesTestMixin, UpdateView):
     model = Feature
     form_class = FeatureForm
     template_name = 'features/add_update_features.html'
-    success_url = reverse_lazy('authority:features_list')
+    success_url = reverse_lazy('authority:feature_list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Update Feature"
+        context["title"] = "Update"
         context["updated"] = True
         return context
 
@@ -57,15 +57,15 @@ class AddFeatureView(LoginRequiredMixin, AdminPassesTestMixin, CreateView):
     model = Feature
     form_class = FeatureForm
     template_name = 'features/add_update_features.html'
-    success_url = reverse_lazy('authority:features_list')
+    success_url = reverse_lazy('authority:feature_list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Add Feature"
+        context["title"] = "Add"
         return context
 
     def form_valid(self, form):
-        messages.success(self.request, "Feature Added Successfully")
+        messages.success(self.request, "Defination  Added Successfully")
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -76,8 +76,8 @@ class FeatureDeleteView(LoginRequiredMixin, AdminPassesTestMixin, DeleteView):
     def post(self, request, pk):
         feature = get_object_or_404(Feature, pk=pk)
         feature.delete()
-        messages.success(request, "Feature deleted successfully.")
-        return redirect('authority:features_list')
+        messages.success(request, "Why choose us deleted successfully.")
+        return redirect('authority:feature_list')
 
 
 # <<----------------- List, Add, Update, Delete FeatureIcon ---------------->>
@@ -88,7 +88,7 @@ class FeatureIconListView(LoginRequiredMixin, AdminPassesTestMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Feature Icons List"
+        context["title"] = "Icon List"
         return context
 
 
@@ -100,7 +100,7 @@ class AddFeatureIconView(LoginRequiredMixin, AdminPassesTestMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Add Feature Icon"
+        context["title"] = "Add Icon"
         return context
 
     def form_valid(self, form):
@@ -120,7 +120,7 @@ class UpdateFeatureIconView(LoginRequiredMixin, AdminPassesTestMixin, UpdateView
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Update Feature Icon"
+        context["title"] = "Update Icon"
         context["updated"] = True
         return context
 

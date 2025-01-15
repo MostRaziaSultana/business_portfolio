@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'home.context_processors.businessinfo',
                 'home.context_processors.logo',
+                'home.context_processors.last_messages',
             ],
         },
     },

@@ -33,7 +33,7 @@ class FactListView(LoginRequiredMixin, AdminPassesTestMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Fact List'
+        context['title'] = 'Feature List'
         return context
 
 
@@ -45,7 +45,7 @@ class AddFactView(LoginRequiredMixin, AdminPassesTestMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Add Fact"
+        context["title"] = "Add Feature"
         return context
 
     def form_valid(self, form):
@@ -65,7 +65,7 @@ class UpdateFactView(LoginRequiredMixin, AdminPassesTestMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Update Fact"
+        context["title"] = "Update Feature"
         return context
 
     def form_invalid(self, form):

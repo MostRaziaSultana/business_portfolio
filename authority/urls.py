@@ -99,6 +99,12 @@ urlpatterns += [
     path('project/add/', manage_project.AddProjectView.as_view(), name='add_project'),
     path('project/update/<int:pk>/', manage_project.UpdateProjectView.as_view(), name='update_project'),
     path('project/delete/<int:pk>/', manage_project.ProjectDeleteView.as_view(), name='delete_project'),
+
+    # Category management
+    path('category-list/', manage_project.CategoryListView.as_view(), name='category_list'),
+    path('category/add/', manage_project.AddCategoryView.as_view(), name='add_category'),
+    path('category/update/<int:pk>/', manage_project.UpdateCategoryView.as_view(), name='update_category'),
+    path('category/delete/<int:pk>/', manage_project.CategoryDeleteView.as_view(), name='delete_category'),
 ]
 
 # Manage Facts

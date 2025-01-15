@@ -44,11 +44,11 @@ class AddCarouselItemView(LoginRequiredMixin, AdminPassesTestMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Add Carousel Item"
+        context["title"] = "Add Banner"
         return context
 
     def form_valid(self, form):
-        messages.success(self.request, "Carousel Item Added Successfully")
+        messages.success(self.request, "Banner Added Successfully")
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -64,8 +64,11 @@ class UpdateCarouselItemView(LoginRequiredMixin, AdminPassesTestMixin, UpdateVie
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Update Carousel Item"
+        context["title"] = "Update Banner"
         return context
+    def form_valid(self, form):
+        messages.success(self.request, "Banner Updated Successfully")
+        return super().form_valid(form)
 
     def form_invalid(self, form):
         messages.error(self.request, "Something went wrong, please try again!")
@@ -77,5 +80,5 @@ class CarouselItemDeleteView(LoginRequiredMixin, AdminPassesTestMixin, DeleteVie
     def post(self, request, pk):
         carousel_item = get_object_or_404(CarouselItem, pk=pk)
         carousel_item.delete()
-        messages.success(request, "Carousel Item deleted successfully.")
+        messages.success(request, "Banner deleted successfully.")
         return redirect('authority:carousel_item_list')

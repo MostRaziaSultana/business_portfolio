@@ -16,6 +16,7 @@
             <thead class="table-white">
                 <tr class="text-grey">
                     <th scope="col" style="text-decoration: none;">Sl</th>
+                    <th scope="col" style="text-decoration: none;">Username</th>  <!-- Added column for Username -->
                     <th scope="col" style="text-decoration: none;">Email</th>
                     <th scope="col" style="text-decoration: none;">Full Name</th>
                     <th scope="col" class="text-center" style="text-decoration: none;">Admin</th>
@@ -28,6 +29,7 @@
                     {% for user in user_list %}
                     <tr>
                         <th scope="row">{{ forloop.counter0|add:page_obj.start_index }}</th>
+                        <td>{{ user.username }}</td>  <!-- Displaying the Username -->
                         <td>{{ user.email }}</td>
                         <td>
                             {% if user.first_name %}
@@ -104,31 +106,7 @@
             </li>
             {% endif %}
         </ul>
-    </div></div>
-
-<style>
-
-
-    /* Additional styling for buttons */
-    .btn-success:hover, .btn-danger:hover {
-        filter: brightness(90%);
-    }
-
-    /* Adjustments for pagination */
-    .pagination {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    /* Optional mobile responsiveness */
-    @media (max-width: 768px) {
-        .table {
-            font-size: 0.9rem;
-        }
-        .btn {
-            font-size: 0.85rem;
-        }
-    }
-</style>
+    </div>
+</div>
 
 {% endblock %}

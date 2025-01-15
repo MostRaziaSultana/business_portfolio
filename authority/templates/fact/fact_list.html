@@ -5,7 +5,7 @@
 <div class="bg-light rounded h-100 p-4 shadow-sm">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h6 class="title-custom">{{ title }}</h6>
-        <a href="{% url 'authority:add_fact' %}" class="btn btn-success">Add Fact</a>
+        <a href="{% url 'authority:add_fact' %}" class="btn btn-success">Add Feature</a>
     </div>
 
     {% if facts %}
@@ -39,7 +39,7 @@
                         <a href="{% url 'authority:update_fact' fact.pk %}" class="btn btn-sm btn-primary">Update</a>
                     </td>
                     <td class="text-center">
-                        <form method="post" action="{% url 'authority:delete_fact' fact.pk %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this fact?');">
+                        <form method="post" action="{% url 'authority:delete_fact' fact.pk %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this feature?');">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>

@@ -16,9 +16,9 @@ from authority.permissions import AdminPassesTestMixin
 
 # Import Models
 from home.models import (
-   Project
+   Project,Category
 )
-from authority.forms import ProjectForm
+from authority.forms import ProjectForm,CategoryForm
 
 # <<----------------- List, Add, Update, Delete Projects ---------------->>
 
@@ -78,3 +78,62 @@ class ProjectDeleteView(LoginRequiredMixin, AdminPassesTestMixin, DeleteView):
         project.delete()
         messages.success(request, "Project deleted successfully.")
         return redirect('authority:project_list')
+
+
+# <<----------------- List, Add, Update, Delete Category ---------------->>
+
+
+class CategoryListView(LoginRequiredMixin, AdminPassesTestMixin, ListView):
+    model = Category
+    template_name = 'project/category_list.html'
+    context_object_name = 'categories'
+
+    def get_queryset(self):
+        return Category.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Category List'
+        return context
+
+class AddCategoryView(LoginRequiredMixin, AdminPassesTestMixin, CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'project/add_update_category.html'
+    success_url = reverse_lazy('authority:category_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Add Category"
+        return context
+
+    def form_valid(self, form):
+        messages.success(self.request, "Category Added Successfully")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Something went wrong, please try again!")
+        return super().form_invalid(form)
+
+class UpdateCategoryView(LoginRequiredMixin, AdminPassesTestMixin, UpdateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'project/add_update_category.html'
+    success_url = reverse_lazy('authority:category_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Update Category"
+        return context
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Something went wrong, please try again!")
+        return super().form_invalid(form)
+
+
+class CategoryDeleteView(LoginRequiredMixin, AdminPassesTestMixin, DeleteView):
+    def post(self, request, pk):
+        category = get_object_or_404(Category, pk=pk)
+        category.delete()
+        messages.success(request, "Category deleted successfully.")
+        return redirect('authority:category_list')

@@ -7,7 +7,7 @@ from ckeditor.widgets import CKEditorWidget
 # models
 from django.contrib.auth.models import User
 from home.models import CarouselItem,Fact,AboutUs,AboutUsContent,Service,Feature,\
-    FeatureIcon,Project,ContactMessage,Blog,Logo,BusinessInfo
+    FeatureIcon,Project,ContactMessage,Blog,Logo,BusinessInfo,Category
 
 # forms
 class UserInfoForm(forms.ModelForm):
@@ -70,6 +70,11 @@ class AboutUsForm(forms.ModelForm):
     class Meta:
         model = AboutUs
         fields = ['title', 'about_image', 'brief_details', 'content']
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']
 
 
 class AboutUsContentForm(forms.ModelForm):

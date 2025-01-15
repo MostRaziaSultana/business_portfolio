@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import CarouselItem,Fact,AboutUs,AboutUsContent,Service,Feature,\
-    FeatureIcon,Project,ContactMessage,Blog
+    FeatureIcon,Project,ContactMessage,Blog,Category
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 # Create your views here.
@@ -79,10 +79,11 @@ def project_details(request,id):
 def projects(request):
     projects = Project.objects.all()
     services = Service.objects.all()
+    categories = Category.objects.all()
     return render(request, 'projects.html', {
         'projects': projects,
-        'category_choices': Project.CATEGORY_CHOICES,
         'services': services,
+        'categories': categories,
     })
 
 
