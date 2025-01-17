@@ -6,8 +6,19 @@
     <meta charset="utf-8">
     <title>{% block title %}shoily{% endblock %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="{{ site_settings.keywords }}" name="keywords">
+    <meta content="{{ site_settings.description }}" name="description">
+
+        <!-- Add GTM Script in the head -->
+    {% if site_settings.gtm_id %}
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id=' + i + dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','{{ gtm_id }}');
+    </script>
+    {% endif %}
 
     <!-- Favicon -->
     <link href="{{ logo.favicon.url }}" rel="icon">
@@ -124,6 +135,39 @@
     </nav>
     <!-- Navbar End -->
 
+<!--:::::Sticky social media:::::::-->
+<div class="chat-buttons-container">
+    <div class="toggle-button">
+        <img src="{% static 'images/chat.png' %}"
+             alt="Click to open chat"
+             id="toggle-chat-image"
+             onclick="toggleChatButtons()"
+             style="cursor: pointer; width: 50px; height: 50px;" />
+    </div>
+
+    <div class="chat-buttons" style="display: none;">
+        <!-- WhatsApp Button -->
+        <div class="whatsapp-button">
+            <a aria-label="Chat on WhatsApp" href="https://wa.me/{{ businessinfo.facebook }}" target="_blank">
+                <img src="{% static 'images/whtsapp.png' %}" alt="WhatsApp" width="40px" height="40px" />
+            </a>
+        </div>
+
+        <!-- Messenger Button -->
+        <div class="messenger-button">
+            <a aria-label="Chat on Messenger" href="{{ businessinfo.instagram }}" target="_blank">
+                <img src="{% static 'images/Facebook_Messenger_logo_2020.svg.webp' %}" alt="Messenger" width="40px" height="40px" />
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+     <!--:::::Sticky social media ends:::::::-->
+
 {% block body %}
 {% endblock %}
 
@@ -225,8 +269,23 @@
 <!--        });-->
 <!--    });-->
 <!--</script>-->
+<script>
 
+// Toggle the display of chat buttons
+function toggleChatButtons() {
+    var chatButtons = document.querySelector('.chat-buttons');
+    if (chatButtons.style.display === 'none' || chatButtons.style.display === '') {
+        // Show and apply animation
+        chatButtons.style.display = 'flex';
+        chatButtons.classList.add('slide-in-from-right');
+    } else {
+        // Hide and reset animation
+        chatButtons.style.display = 'none';
+        chatButtons.classList.remove('slide-in-from-right');
+    }
+}
 
+</script>
 </body>
 
 </html>
