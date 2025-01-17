@@ -128,3 +128,16 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+class SiteSettings(models.Model):
+    gtm_id = models.CharField(max_length=20, blank=True, null=True,
+                              help_text="Google Tag Manager ID (e.g., GTM-XXXXXX)")
+    keywords = models.TextField(blank=True,null=True,help_text="Meta keywords for SEO, separated by commas.")
+    description = models.TextField(blank=True,null=True,help_text="Meta description for SEO.")
+    facebook_domain_verification_id = models.CharField(max_length=255,blank=True,null=True,
+                                                       help_text="Facebook domain verification ID.")
+    google_site_verification_id = models.CharField(max_length=255,blank=True,null=True,
+                                                   help_text="Google site verification ID.")
+
+    def __str__(self):
+        return self.site_name
