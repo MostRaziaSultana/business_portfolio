@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import CarouselItem,Fact,AboutUsContent,AboutUs,Service,Feature,\
-    FeatureIcon,BusinessInfo,Logo,Project,ContactMessage,Blog,Category
+    FeatureIcon,BusinessInfo,Logo,Project,ContactMessage,Blog,Category,SiteSettings
 # Register your models here.
 admin.site.register(CarouselItem)
 admin.site.register(Fact)
@@ -15,3 +15,4 @@ admin.site.register(Category)
 admin.site.register(Project)
 admin.site.register(ContactMessage)
 admin.site.register(Blog)
+admin.site.register(SiteSettings)
