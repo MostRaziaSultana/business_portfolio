@@ -16,12 +16,11 @@
             <!-- Title Row -->
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="id_title" class="form-label">Title</label>
+                    <label for="id_title" class="form-label">Title <span class="text-danger">*</span></label>
                     {{ form.title|add_class:"form-control" }}
                 </div>
             </div>
 
-            <!-- About Image Row -->
             <div class="row mb-4">
                 <div class="col-md-6">
                     <label for="id_about_image" class="form-label">About Image</label>
@@ -37,17 +36,15 @@
                 </div>
             </div>
 
-            <!-- Brief Details Row -->
             <div class="row mb-4">
                 <div class="col-md-12">
-                    <label for="id_brief_details" class="form-label">Brief Details</label>
+                    <label for="id_brief_details" class="form-label">Brief Details <span class="text-danger">*</span></label>
                     {{ form.brief_details|add_class:"form-control" }}
                 </div>
             </div>
 
-            <!-- Content Row -->
             <div class="row mb-4">
-                    <label for="id_content" class="form-label">Content</label>
+                    <label for="id_content" class="form-label">Content <span class="text-danger">*</span></label>
                     {{ form.content|add_class:"form-control" }}
             </div>
 

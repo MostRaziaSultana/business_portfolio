@@ -12,12 +12,12 @@
         <!-- Row for Username and Password -->
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="id_username" class="form-label">Username</label>
+                <label for="id_username" class="form-label">Username <span class="text-danger">*</span></label>
                 {{ form.username|add_class:"form-control" }}
             </div>
 
           <div class="col-md-6">
-            <label for="id_password" class="form-label">Password</label>
+            <label for="id_password" class="form-label">Password <span class="text-danger">*</span></label>
             {{ form.password|add_class:"form-control" }}
             <div class="form-text">
                 <ul>
@@ -28,29 +28,29 @@
 
         </div>
 
-        <!-- Row for Full Name and Email -->
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="id_full_name" class="form-label">Full Name</label>
-                {{ form.full_name|add_class:"form-control" }}
-                {% if form.full_name.errors %}
-                    <div class="text-danger small">{{ form.full_name.errors|join:" " }}</div>
-                {% endif %}
-            </div>
+<!--        &lt;!&ndash; Row for Full Name and Email &ndash;&gt;-->
+<!--        <div class="row mb-3">-->
+<!--            <div class="col-md-6">-->
+<!--                <label for="id_full_name" class="form-label">Full Name</label>-->
+<!--                {{ form.full_name|add_class:"form-control" }}-->
+<!--                {% if form.full_name.errors %}-->
+<!--                    <div class="text-danger small">{{ form.full_name.errors|join:" " }}</div>-->
+<!--                {% endif %}-->
+<!--            </div>-->
 
-            <div class="col-md-6">
-                <label for="id_email" class="form-label">Email</label>
-                {{ form.email|add_class:"form-control" }}
-            </div>
-        </div>
+<!--            <div class="col-md-6">-->
+<!--                <label for="id_email" class="form-label">Email</label>-->
+<!--                {{ form.email|add_class:"form-control" }}-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <!-- Row for Phone Number -->
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="id_phone_number" class="form-label">Phone Number</label>
-                {{ form.phone_number|add_class:"form-control" }}
-            </div>
-        </div>
+<!--        &lt;!&ndash; Row for Phone Number &ndash;&gt;-->
+<!--        <div class="row mb-3">-->
+<!--            <div class="col-md-6">-->
+<!--                <label for="id_phone_number" class="form-label">Phone Number</label>-->
+<!--                {{ form.phone_number|add_class:"form-control" }}-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="text-left">
             <button type="submit" class="btn btn-primary">Add Admin</button>
