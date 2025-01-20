@@ -15,19 +15,17 @@
 
         <div class="about-us-content-details mb-4">
 
-            <!-- First Row with Title and Number -->
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="title" class="form-label">Title</label>
+                    <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
                     {{ form.title|add_class:"form-control" }}
                 </div>
                 <div class="col-md-6">
-                    <label for="number" class="form-label">Number</label>
+                    <label for="number" class="form-label">Number <span class="text-danger">*</span></label>
                     {{ form.number|add_class:"form-control" }}
                 </div>
             </div>
 
-            <!-- Second Row with Icon (Image Upload) -->
             <div class="row mb-4">
                 <div class="col-md-6">
                     <label for="icon" class="form-label">Icon</label>
