@@ -12,13 +12,15 @@
         {% csrf_token %}
 
         <div class="form-group mb-4">
-            <label for="title" class="form-label">Title</label>
+            <label for="id_title" class="form-label">
+                Title <span class="text-danger">*</span>
+            </label>
             {{ form.title|add_class:"form-control" }}
         </div>
 
         <div class="row mb-4">
             <div class="col-md-6">
-                <label for="image" class="form-label">Image</label>
+                <label for="id_image" class="form-label">Image <span class="text-danger">*</span></label>
                 {{ form.image|add_class:"form-control" }}
             </div>
             <div class="col-md-6">
@@ -32,7 +34,7 @@
         </div>
 
         <div class="row mb-4">
-            <label for="content" class="form-label">Content</label>
+            <label for="content" class="form-label">Content <span class="text-danger">*</span></label>
             {{ form.content|add_class:"form-control" }}
         </div>
 

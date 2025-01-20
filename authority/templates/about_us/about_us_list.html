@@ -16,7 +16,7 @@
                 <tr class="text-grey">
                     <th scope="col">Title</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Brief Details</th>
+                    <th scope="col">Description</th>
                     <th scope="col" class="text-center">Update</th>
                     <th scope="col" class="text-center">Delete</th>
                 </tr>
@@ -31,7 +31,7 @@
                         No Image
                         {% endif %}
                     </td>
-                    <td>{{ about_data.brief_details|truncatechars:50 }}</td>
+                    <td>{{ about_data.description|safe|truncatechars:50 }}</td>
                     <td class="text-center">
                         <a href="{% url 'authority:update_about_us' about_data.pk %}" class="btn btn-sm btn-primary">Update</a>
                     </td>
