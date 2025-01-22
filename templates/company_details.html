@@ -1,12 +1,54 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} aboutus_details {% endblock %}
+{% block title %} About Us Details {% endblock %}
 {% block body %}
 
+<div class="container my-5">
+    <div class="text-center">
+        <h1 class="about-title">{{ about_us.title }}</h1>
+        <hr class="about-title-underline">
+    </div>
 
-<div class="container">
-    <p>{{ about_us.description|safe }}</p>
+    <div class="text-center mt-4">
+        <img src="{{ about_us.about_image.url }}" alt="{{ about_us.title }}" class="about-image">
+    </div>
+
+    <div class="about-description mt-4">
+        <p>{{ about_us.description|safe }}</p>
+    </div>
 </div>
+<style>
 
+.about-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
 
+.about-title-underline {
+    width: 30%;
+    height: 2px;
+    background-color: #333;
+    margin: 0 auto;
+    border: none;
+}
+
+.about-image {
+    width: 60%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: left;
+    margin-top: 20px;
+}
+
+</style>
 {% endblock %}
