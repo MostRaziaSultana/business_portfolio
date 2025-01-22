@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import CarouselItem,Fact,AboutUs,AboutUsContent,Service,Feature,\
-    FeatureIcon,Project,ContactMessage,Blog,Category
+    FeatureIcon,Project,ContactMessage,Blog,Category,Brand,ProductCategory,Product
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
 
@@ -10,10 +11,11 @@ def home(request):
     facts = Fact.objects.all().order_by('number')
     about_data = AboutUs.objects.first()
     about_content = AboutUsContent.objects.all()
-    services = Service.objects.all()
+    services = Service.objects.filter(in_homepage='yes')
     features = Feature.objects.first()
     feature_icons = FeatureIcon.objects.all()
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.filter(in_homepage='yes')
+    brands = Brand.objects.all()
 
     return render(request, 'index.html', {
         'carousel_items': carousel_items,
@@ -24,7 +26,8 @@ def home(request):
         'features': features,
         'feature_icons': feature_icons,
         'projects': projects,
-        'blogs': blogs
+        'blogs': blogs,
+        'brands': brands
     })
 
 
@@ -95,4 +98,76 @@ def blog_details(request, id):
         'blog_details': blog_details,
         'services': services,
         'blogs': blogs
+    })
+
+
+def products(request):
+    categories = ProductCategory.objects.all()
+    products = Product.objects.all()
+    services = Service.objects.all()
+
+    paginator = Paginator(products, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'product.html', {
+        'products': page_obj,
+        'services': services,
+        'categories': categories,
+        'total_products': products.count(),
+    })
+
+def blogs(request):
+    blogs = Blog.objects.all()
+    services = Service.objects.all()
+
+    paginator = Paginator(blogs, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'all_blogs.html', {
+        'blogs': page_obj,
+        'services': services,
+        'total_blogs': blogs.count(),
+    })
+def services(request):
+    services = Service.objects.all()
+
+    paginator = Paginator(services, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'all_services.html', {
+        'services': page_obj,
+        'total_services': services.count(),
+    })
+
+def product_details(request, id):
+    product_details = get_object_or_404(Product, id=id)
+    services = Service.objects.all()
+    return render(request, 'product_details.html', {
+        'product_details': product_details,
+        'services': services,
+    })
+
+def product_details(request, id):
+    product_details = get_object_or_404(Product, id=id)
+    services = Service.objects.all()
+    return render(request, 'product_details.html', {
+        'product_details': product_details,
+        'services': services,
+    })
+
+
+def category_products(request, id):
+    category = get_object_or_404(ProductCategory, id=id)
+    products = Product.objects.filter(category=category)
+    services = Service.objects.all()
+    total_products = products.count()
+
+    return render(request, 'product.html', {
+        'category': category,
+        'products': products,
+        'services': services,
+        'total_products': total_products,
     })

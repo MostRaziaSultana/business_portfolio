@@ -26,6 +26,7 @@ class ContactMessageListView(LoginRequiredMixin, AdminPassesTestMixin, ListView)
     model = ContactMessage
     template_name = 'contact/contact_message_list.html'
     context_object_name = 'contact_messages'
+    paginate_by = 10
 
     def get_queryset(self):
         return ContactMessage.objects.all()

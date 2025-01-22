@@ -38,7 +38,7 @@
                     <td>{{ content.number }}</td>
                     <td>{{ content.title }}</td>
                     <td class="text-center">
-                        <a class="order-now-btn" href="{% url 'authority:update_about_us_content' content.pk %}">Update</a>
+                        <a class="btn btn-sm btn-primary" href="{% url 'authority:update_about_us_content' content.pk %}">Update</a>
                     </td>
                     <td class="text-center">
                         <form method="post" action="{% url 'authority:delete_about_us_content' content.pk %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this About Us Content?');">

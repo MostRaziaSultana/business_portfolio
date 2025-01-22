@@ -11,19 +11,16 @@
         {% csrf_token %}
 
         <div class="mb-4">
-            <label for="title" class="form-label">Feature Title</label>
+            <label for="title" class="form-label">Feature Title <span class="text-danger">*</span></label>
             {{ form.title|add_class:"form-control" }}
         </div>
 
-        <!-- Image Upload with Preview -->
         <div class="row mb-4">
-            <!-- Left Column: Image Input -->
             <div class="col-md-6">
-                <label for="image" class="form-label">Feature Image</label>
+                <label for="image" class="form-label">Feature Image <span class="text-danger">*</span></label>
                 {{ form.image|add_class:"form-control" }}
             </div>
 
-            <!-- Right Column: Current Image Preview -->
             <div class="col-md-6">
                 {% if form.instance.image %}
                     <div class="mt-2">
@@ -39,7 +36,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="description" class="form-label">Description</label>
+            <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
             {{ form.description|add_class:"form-control" }}
         </div>
 

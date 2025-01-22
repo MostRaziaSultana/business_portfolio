@@ -49,7 +49,7 @@ class AddFactView(LoginRequiredMixin, AdminPassesTestMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        messages.success(self.request, "Fact Added Successfully")
+        messages.success(self.request, "Feature Added Successfully")
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -68,6 +68,10 @@ class UpdateFactView(LoginRequiredMixin, AdminPassesTestMixin, UpdateView):
         context["title"] = "Update Feature"
         return context
 
+    def form_valid(self, form):
+        messages.success(self.request, "Feature Updated Successfully")
+        return super().form_valid(form)
+
     def form_invalid(self, form):
         messages.error(self.request, "Something went wrong, please try again!")
         return super().form_invalid(form)
@@ -78,5 +82,5 @@ class FactDeleteView(LoginRequiredMixin, AdminPassesTestMixin, DeleteView):
     def post(self, request, pk):
         fact = get_object_or_404(Fact, pk=pk)
         fact.delete()
-        messages.success(request, "Fact deleted successfully.")
+        messages.success(request, "Feature deleted successfully.")
         return redirect('authority:fact_list')

@@ -15,34 +15,48 @@
 
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="gtmID" class="form-label">GTM ID</label>
+                    <label for="gtmID" class="form-label">
+                        GTM ID (Optional)
+                    </label>
                     {{ form.gtm_id|add_class:"form-control" }}
+                    <small class="form-text text-muted">{{ form.gtm_id.help_text }}</small>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="facebookDomainVerificationID" class="form-label">Facebook Domain Verification ID</label>
+                    <label for="facebookDomainVerificationID" class="form-label">
+                        Facebook Domain Verification ID (Optional)
+                    </label>
                     {{ form.facebook_domain_verification_id|add_class:"form-control" }}
+                    <small class="form-text text-muted">{{ form.facebook_domain_verification_id.help_text }}</small>
                 </div>
                 <div class="col-md-6">
-                    <label for="googleSiteVerificationID" class="form-label">Google Site Verification ID</label>
+                    <label for="googleSiteVerificationID" class="form-label">
+                        Google Site Verification ID (Optional)
+                    </label>
                     {{ form.google_site_verification_id|add_class:"form-control" }}
+                    <small class="form-text text-muted">{{ form.google_site_verification_id.help_text }}</small>
                 </div>
             </div>
 
-
             <div class="row mb-4">
                 <div class="col">
-                    <label for="Keywords" class="form-label">Keywords</label>
+                    <label for="Keywords" class="form-label">
+                        Keywords (Optional)
+                    </label>
                     {{ form.keywords|add_class:"form-control" }}
+                    <small class="form-text text-muted">{{ form.keywords.help_text }}</small>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col">
-                    <label for="description" class="form-label">Description</label>
+                    <label for="description" class="form-label">
+                        Description (Optional)
+                    </label>
                     {{ form.description|add_class:"form-control" }}
+                    <small class="form-text text-muted">{{ form.description.help_text }}</small>
                 </div>
             </div>
         </div>

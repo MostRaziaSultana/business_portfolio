@@ -12,22 +12,20 @@
         {% csrf_token %}
 
         <div class="feature-icon-details mb-4">
-            <!-- Icon Name and Highlighted Word in the Same Row -->
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="id_title" class="form-label">Icon Name</label>
-                    {{ form.title|add_class:"form-control" }}  <!-- Changed to 'title' based on model -->
+                    <label for="id_title" class="form-label">Icon Name <span class="text-danger">*</span></label>
+                    {{ form.title|add_class:"form-control" }}
                 </div>
                 <div class="col-md-6">
                     <label for="id_highlighted_word" class="form-label">Highlighted Word</label>
-                    {{ form.highlighted_word|add_class:"form-control" }}  <!-- Highlighted word field -->
+                    {{ form.highlighted_word|add_class:"form-control" }}
                 </div>
             </div>
 
-            <!-- Icon Image in a Separate Row with Preview on the Right -->
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="id_icon" class="form-label">Icon Image</label>
+                    <label for="id_icon" class="form-label">Icon Image <span class="text-danger">*</span></label>
                     {{ form.icon|add_class:"form-control" }}
                 </div>
                 <div class="col-md-6">

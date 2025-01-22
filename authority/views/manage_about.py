@@ -42,6 +42,10 @@ class UpdateAboutUsView(LoginRequiredMixin, AdminPassesTestMixin, UpdateView):
         context["updated"] = True
         return context
 
+    def form_valid(self, form):
+        messages.success(self.request, "About Us Updated Successfully")
+        return super().form_valid(form)
+
     def form_invalid(self, form):
         messages.error(self.request, "Something went wrong, please try again!")
         return super().form_invalid(form)

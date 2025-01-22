@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} product details {% endblock %}
+{% block body %}
+
+
+<div class="container1 my-5">
+    <div class="row g-4">
+         <div class="col-md-6 image-container">
+            <img src="{{ product_details.image.url }}" alt="{{ product_details.name }}" class="product-image">
+        </div>
+        <div class="col-md-6">
+            <h1 class="product-title">{{ product_details.name }}</h1>
+            <h3 class="product-price">Tk {{ product_details.price }}</h3>
+            <div class="button-container">
+                <a href="https://wa.me/{{ businessinfo.whatsapp }}" class="order-now-btn">
+                    <i class="fa fa-shopping-cart me-2"></i> Order Now
+                </a>
+                <span class="call-now-btn">
+                     <i class="fa fa-phone me-2"></i> Call Now : {{ businessinfo.whatsapp }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="description-section mt-5">
+        <h5 class="description-title">Description</h5>
+        <hr class="description-divider">
+        <span class="description-text">{{ product_details.description|safe }}</span>
+    </div>
+</div>
+
+{% endblock %}

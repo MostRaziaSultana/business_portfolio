@@ -1,0 +1,28 @@
+{% extends 'authority_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div class="bg-light rounded h-100 p-4 shadow-sm">
+    <h6 class="title-custom mb-4">{{ title }}</h6>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Category Name Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="id_name" class="form-label">Category Name</label>
+                {{ form.name|add_class:"form-control" }}
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

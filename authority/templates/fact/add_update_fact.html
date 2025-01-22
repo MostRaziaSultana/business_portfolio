@@ -11,23 +11,20 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Title and Description -->
         <div class="row mb-4">
             <div class="col-md-6">
-                <label for="id_title" class="form-label">Title</label>
+                <label for="id_title" class="form-label">Title <span class="text-danger">*</span></label>
                 {{ form.title|add_class:"form-control" }}
             </div>
             <div class="col-md-6">
-                <label for="id_number" class="form-label">Number</label>
+                <label for="id_number" class="form-label">Number <span class="text-danger">*</span></label>
                 {{ form.number|add_class:"form-control" }}
             </div>
         </div>
 
-
-        <!-- Icon Upload Section -->
         <div class="row mb-4">
             <div class="col-md-6">
-                <label for="id_icon" class="form-label">Icon</label>
+                <label for="id_icon" class="form-label">Icon <span class="text-danger">*</span></label>
                 {{ form.icon|add_class:"form-control" }}
             </div>
             <div class="col-md-6">
@@ -40,16 +37,13 @@
             </div>
         </div>
 
-        <!-- Description Section -->
         <div class="row mb-4">
             <div class="col-md-12">
-                <label for="id_description" class="form-label">Description</label>
+                <label for="id_description" class="form-label">Description <span class="text-danger">*</span></label>
                 {{ form.description|add_class:"form-control" }}
             </div>
         </div>
 
-
-        <!-- Submit Button -->
         <div class="d-grid gap-2 col-6 mx-auto">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

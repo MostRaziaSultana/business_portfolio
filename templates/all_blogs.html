@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}blogs{% endblock %}
+
+{% block body %}
+
+<!-- Blogs Start -->
+<div class="container-xxl py-5" id="blogs">
+    <div class="container">
+        <div class="text-center">
+            <div class="bg-primary mb-3 mx-auto" style="width: 40px; height: 2px;"></div>
+            <h1 class="display-5 mb-5">Recent Blogs</h1>
+        </div>
+        <div class="row g-4">
+            {% for blog in blogs %}
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card card h-100">
+                    <div class="image-thumb">
+                        <!-- Blog Image -->
+                        <a href="{% url 'blog_details' blog.id %}">
+                            <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="down-content">
+                        <h4>
+                            <a class="product_name" href="{% url 'blog_details' blog.id %}">{{ blog.title|truncatechars:30 }}</a>
+                        </h4>
+                        <a class="btn btn-primary" href="{% url 'blog_details' blog.id %}">
+                            <i class="fa fa-arrow-right me-2"></i>Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+            <div class="d-flex justify-content-between mt-4">
+        <div class="text-left">
+            <p>Total blogs: {{ total_blogs }}</p>
+        </div>
+        <div class="text-right">
+            <nav>
+                <ul class="pagination">
+                    {% if blogs.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="First">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ blogs.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in blogs.paginator.page_range %}
+                    <li class="page-item {% if blogs.number == i %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {% if blogs.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ blogs.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ blogs.paginator.num_pages }}" aria-label="Last">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    </div>
+</div>
+<!-- Blogs End -->
+
+{% endblock %}

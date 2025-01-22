@@ -35,7 +35,7 @@
                     <td>{{ businessinfo.facebook_link }}</td>
                     <td>{{ businessinfo.instagram_link }}</td>
                     <td class="text-center">
-                        <a class="order-now-btn" href="{% url 'authority:update_business_info' businessinfo.pk %}">Update</a>
+                        <a class="btn btn-sm btn-primary" href="{% url 'authority:update_business_info' businessinfo.pk %}">Update</a>
                     </td>
                     <td class="text-center">
                         <form method="post" action="{% url 'authority:delete_business_info' businessinfo.pk %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this Business Info?');">

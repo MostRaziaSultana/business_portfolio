@@ -72,6 +72,8 @@ TEMPLATES = [
                 'home.context_processors.businessinfo',
                 'home.context_processors.logo',
                 'home.context_processors.last_messages',
+                'home.context_processors.site_settings',
+                'home.context_processors.product_categories',
             ],
         },
     },
@@ -115,7 +117,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
+USE_TZ = True
 
 USE_I18N = True
 
@@ -131,7 +134,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static', ]
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/admin/login/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

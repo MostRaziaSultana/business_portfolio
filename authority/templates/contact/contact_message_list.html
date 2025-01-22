@@ -45,17 +45,47 @@
             </tbody>
         </table>
 
-        <!-- Pagination controls -->
-        <div class="pagination mt-3">
-            <div class="d-flex justify-content-end">
-                {% if contact_messages.has_previous %}
-                    <a class="btn btn-secondary me-2" href="?page={{ contact_messages.previous_page_number }}">Previous</a>
-                {% endif %}
-                {% if contact_messages.has_next %}
-                    <a class="btn btn-secondary" href="?page={{ contact_messages.next_page_number }}">Next</a>
-                {% endif %}
-            </div>
-        </div>
+        <div class="pagination" style="text-align: right; margin: 20px 0;">
+        <ul class="pagination" style="list-style: none; padding: 0; margin: 0; display: inline-flex;">
+            {% if page_obj.has_previous %}
+            <li class="page-item" style="margin-left: 5px;">
+                <a class="page-link"
+                   href="?page={{ page_obj.previous_page_number }}"
+                   aria-label="Previous"
+                   style="color: #ffffff; background-color: #007bff; border: 1px solid #007bff; padding: 0.5em 1em; text-decoration: none; display: inline-block;">
+                    <span aria-hidden="true">&laquo; Previous</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled" style="margin-left: 5px;">
+                <span class="page-link"
+                      aria-label="Previous"
+                      style="color: #6c757d; background-color: transparent; border: 1px solid #6c757d; padding: 0.5em 1em; display: inline-block;">
+                    <span aria-hidden="true">&laquo; Previous</span>
+                </span>
+            </li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item" style="margin-left: 5px;">
+                <a class="page-link"
+                   href="?page={{ page_obj.next_page_number }}"
+                   aria-label="Next"
+                   style="color: #ffffff; background-color: #007bff; border: 1px solid #007bff; padding: 0.5em 1em; text-decoration: none; display: inline-block;">
+                    <span aria-hidden="true">Next &raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled" style="margin-left: 5px;">
+                <span class="page-link"
+                      aria-label="Next"
+                      style="color: #6c757d; background-color: transparent; border: 1px solid #6c757d; padding: 0.5em 1em; display: inline-block;">
+                    <span aria-hidden="true">Next &raquo;</span>
+                </span>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
     </div>
 </div>
 {% endblock body %}

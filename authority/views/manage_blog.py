@@ -20,6 +20,7 @@ class BlogListView(LoginRequiredMixin, AdminPassesTestMixin, ListView):
     model = Blog
     template_name = 'blog/blog_list.html'
     context_object_name = 'blogs'
+    paginate_by = 10
 
     def get_queryset(self):
         return Blog.objects.all()

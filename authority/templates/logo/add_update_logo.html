@@ -11,7 +11,6 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Header Logo -->
         <div class="mb-4">
             <label for="header_logo" class="form-label">Header Logo</label>
             {{ form.header_logo|add_class:"form-control" }}
@@ -22,7 +21,6 @@
             {% endif %}
         </div>
 
-        <!-- Footer Logo -->
         <div class="mb-4">
             <label for="footer_logo" class="form-label">Footer Logo</label>
             {{ form.footer_logo|add_class:"form-control" }}
@@ -33,7 +31,6 @@
             {% endif %}
         </div>
 
-        <!-- Favicon -->
         <div class="mb-4">
             <label for="favicon" class="form-label">Favicon</label>
             {{ form.favicon|add_class:"form-control" }}

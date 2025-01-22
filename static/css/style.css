@@ -138,6 +138,96 @@
     color: #343a40;
 }
 
+
+
+/* Nav Design */
+.shadow-navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    max-height: 50px;
+    object-fit: contain;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #0056b3;
+}
+
+
+/* WhatsApp Button */
+.whatsapp-button {
+    position: fixed;
+    bottom: 0px;
+    left: 3rem;
+    padding: 10px;
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+/* Hover effect for WhatsApp */
+.whatsapp-button:hover {
+    transform: scale(1.1);
+}
+
+/* Messenger Button */
+.messenger-button {
+    position: fixed;
+    bottom: 0px;
+    left: 5.8rem;
+    padding: 10px;
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+/* Hover effect for Messenger */
+.messenger-button:hover {
+    transform: scale(1.1);
+}
+
+/* Container for chat buttons */
+.chat-buttons-container {
+    position: fixed;
+    bottom: 15px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* Chat buttons should appear from the left side */
+.chat-buttons {
+    display: none;
+    flex-direction: row-reverse;
+    gap: 10px;
+    animation: slideInLeft 0.5s forwards;
+}
+
+/* Slide-in animation from left to right */
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Display WhatsApp and Messenger buttons inside the container */
+.chat-buttons .whatsapp-button,
+.chat-buttons .messenger-button {
+    display: inline-block;
+}
+
+/* Toggle button for chat visibility */
+.toggle-button img {
+    cursor: pointer;
+}
+
 /* General Styling for Blog Card */
 .blog-card {
     background-color: #fff;
@@ -150,6 +240,97 @@
 .blog-card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+/* Product details */
+.container1{
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+}
+.product-image {
+    width: 100%;
+    border-radius: 10px;
+    height: 360px;
+    object-fit: cover;
+}
+
+.product-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.product-price {
+    color: #7cc04f;
+    margin-top: 20px;
+}
+
+.order-now-btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7cc04f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 10rem;
+}
+.call-now-btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7cc04f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 16rem;
+}
+
+.order-now-btn:hover {
+    background-color: #6ab03f;
+    color:#ffff;
+}
+
+.btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.description-section {
+    margin-top: 50px;
+}
+
+.description-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.description-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: black !important;
+}
+
+.description-divider {
+    border-top: 1px dotted #ccc;
 }
 
 /* Blog Image Styling */
@@ -507,9 +688,6 @@
 
 
 /*** Service ***/
-.service-row {
-    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
-}
 
 .service-item {
     border-color: rgba(0, 0, 0, .03) !important;
@@ -530,6 +708,30 @@
 
 .service-item:hover .btn {
     width: 140px;
+}
+
+.service-item {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    background: none;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-row .col-md-6 {
+    padding: 15px;
+}
+
+.btn-square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 

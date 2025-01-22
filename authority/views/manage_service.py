@@ -20,6 +20,7 @@ class ServiceListView(LoginRequiredMixin, AdminPassesTestMixin, ListView):
     model = Service
     template_name = 'service/service_list.html'
     context_object_name = 'services'
+    paginate_by = 10
 
     def get_queryset(self):
         return Service.objects.all()
@@ -41,7 +42,9 @@ class UpdateServiceView(LoginRequiredMixin, AdminPassesTestMixin, UpdateView):
         context["title"] = "Update Service"
         context["updated"] = True
         return context
-
+    def form_valid(self, form):
+        messages.success(self.request, "Service Updated Successfully")
+        return super().form_valid(form)
     def form_invalid(self, form):
         messages.error(self.request, "Something went wrong, please try again!")
         return super().form_invalid(form)

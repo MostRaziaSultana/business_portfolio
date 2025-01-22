@@ -11,10 +11,9 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- First Row: Title and Subtitle -->
         <div class="row mb-4">
             <div class="col-md-6">
-                <label for="id_title" class="form-label">Title</label>
+                <label for="id_title" class="form-label">Title <span class="text-danger">*</span></label>
                 {{ form.title|add_class:"form-control" }}
             </div>
             <div class="col-md-6">
@@ -23,18 +22,16 @@
             </div>
         </div>
 
-        <!-- Category Section -->
-          <div class="row mb-4">
-                <div class="col-md-6">
-                    <label for="Category" class="form-label">Category</label>
-                    {{ form.category | add_class:"form-control" }}
-                </div>
-            </div>
-
-                <!-- Image Upload Section -->
         <div class="row mb-4">
             <div class="col-md-6">
-                <label for="id_image" class="form-label">Project Image</label>
+                <label for="Category" class="form-label">Category</label>
+                {{ form.category | add_class:"form-control" }}
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="id_image" class="form-label">Project Image <span class="text-danger">*</span></label>
                 {{ form.image|add_class:"form-control" }}
             </div>
             <div class="col-md-6">
@@ -47,14 +44,11 @@
             </div>
         </div>
 
-
-        <!-- Content Section -->
         <div class="row mb-4">
-                <label for="id_content" class="form-label">Content</label>
-                {{ form.content|add_class:"form-control" }}
+            <label for="id_content" class="form-label">Content <span class="text-danger">*</span></label>
+            {{ form.content|add_class:"form-control" }}
         </div>
 
-        <!-- Submit Button -->
         <div class="d-grid gap-2 col-6 mx-auto">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

@@ -52,6 +52,14 @@
         const filterButtons = document.querySelectorAll('#portfolio-flters li');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
 
+        // Function to trigger layout recalculation
+        function triggerReflow() {
+            const portfolioContainer = document.querySelector('.portfolio-container');
+            portfolioContainer.style.display = 'none'; // Hide the container temporarily
+            portfolioContainer.offsetHeight; // Force reflow by accessing the height
+            portfolioContainer.style.display = 'flex'; // Show the container again
+        }
+
         filterButtons.forEach(button => {
             button.addEventListener('click', function () {
                 // Remove active class from all buttons
@@ -66,6 +74,12 @@
                         item.style.display = 'none';
                     }
                 });
+
+                // Trigger layout recalculation after filtering
+                triggerReflow();
+
+                // Reinitialize WOW.js animations after filtering
+                new WOW().init();
             });
         });
     });

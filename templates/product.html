@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Products{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="text-center">
+        <div class="bg-primary mb-3 mx-auto" style="width: 40px; height: 2px;"></div>
+        <h1 class="display-5 mb-5">Our Products</h1>
+    </div>
+
+    <div class="row g-4">
+        {% for product in products %}
+        <div class="col-lg-3 col-md-6">
+            <div class="product-card card h-100">
+                <div class="image-thumb">
+                    <a href="{% url 'product_details' product.id %}">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                    </a>
+                </div>
+                <div class="down-content" style="background-color: #f8f9fa;">
+                    <h5 class="card-title text-center text-primary">{{ product.name|truncatewords:3  }}</h5>
+                    <p class="card-text text-center text-muted">Tk {{ product.price }}</p>
+                    <div class="text-center">
+                        <a href="{% url 'product_details' product.id %}" class="btn btn-primary btn-block">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <div class="text-left">
+            <p>Total Products: {{ total_products }}</p>
+        </div>
+        <div class="text-right">
+            <nav>
+                <ul class="pagination">
+                    {% if products.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="First">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in products.paginator.page_range %}
+                    <li class="page-item {% if products.number == i %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {% if products.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ products.paginator.num_pages }}" aria-label="Last">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 15px;
+    }
+
+    .product-card {
+        background-color: #f1f1f1;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-thumb {
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .image-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #007bff;
+        margin-bottom: 0.5rem;
+        text-transform: capitalize;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+        color: #6c757d;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        font-size: 1rem;
+        padding: 10px 20px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        .card-title {
+            font-size: 1.2rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+        }
+
+        .image-thumb {
+            height: 150px;
+        }
+    }
+</style>
+
+{% endblock %}

@@ -36,7 +36,7 @@
                         {% endif %}
                     </td>
                     <td class="text-center">
-                        <a href="{% url 'authority:update_feature_icon' icon.pk %}" class="order-now-btn">Update</a>
+                        <a href="{% url 'authority:update_feature_icon' icon.pk %}" class="btn btn-sm btn-primary">Update</a>
                     </td>
                     <td class="text-center">
                         <form method="post" action="{% url 'authority:delete_feature_icon' icon.pk %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this Feature Icon?');">

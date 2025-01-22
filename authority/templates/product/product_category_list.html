@@ -6,8 +6,8 @@
 {% block body %}
 <div class="bg-light rounded h-100 p-4 shadow-sm">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h6 class="title-custom">Category Management</h6>
-        <a href="{% url 'authority:add_category' %}" class="btn btn-primary">Add Category</a>
+        <h6 class="title-custom">Product Category Management</h6>
+        <a href="{% url 'authority:add_product_category' %}" class="btn btn-primary">Add Category</a>
     </div>
 
     {% if categories %}
@@ -15,7 +15,7 @@
         <table class="table text-start align-middle table-bordered table-hover mb-0 table-custom">
             <thead class="table-white">
                 <tr class="text-grey">
-                    <th scope="col">Category Name</th>
+                    <th scope="col">Product Category Name</th>
                     <th scope="col" class="text-center">Update</th>
                     <th scope="col" class="text-center">Delete</th>
                 </tr>
@@ -25,10 +25,10 @@
                 <tr>
                     <td>{{ category.name }}</td>
                     <td class="text-center">
-                        <a class="btn btn-sm btn-primary" href="{% url 'authority:update_category' category.pk %}">Update</a>
+                        <a class="btn btn-sm btn-primary" href="{% url 'authority:update_product_category' category.pk %}">Update</a>
                     </td>
                     <td class="text-center">
-                        <form method="post" action="{% url 'authority:delete_category' category.pk %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                        <form method="post" action="{% url 'authority:delete_product_category' category.pk %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this product category?');">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
@@ -39,7 +39,7 @@
         </table>
     </div>
     {% else %}
-    <div class="text-center text-muted">No Categories found.</div>
+    <div class="text-center text-muted">No Product Categories found.</div>
     {% endif %}
 </div>
 {% endblock %}

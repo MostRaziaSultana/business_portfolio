@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+
+<!-- Service Start -->
+<div class="container-xxl py-5" id="service">
+    <div class="container">
+        <div class="text-center">
+            <div class="bg-primary mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
+            <h1 class="display-5 mb-5">Our Services</h1>
+        </div>
+        <div class="row g-4 service-row">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                <div class="service-item h-100 p-5 shadow-service">
+                   <div class="btn-square bg-light rounded-circle mb-4" style="width: 64px; height: 64px;">
+                        {% if service.icon %}
+                            <img class="img-fluid" src="{{ service.icon.url }}" alt="Icon">
+                        {% else %}
+                            <i class="fa fa-question-circle text-muted" style="font-size: 32px;"></i>
+                        {% endif %}
+                    </div>
+
+                    <h4 class="mb-3">{{ service.title }}</h4>
+                    <p class="mb-4">{{ service.details|truncatewords:4|safe }}</p>
+                    <a class="btn" href="{% url 'service_details' service.id %}">
+                        <i class="fa fa-arrow-right text-white me-3"></i>Read More
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+          <div class="d-flex justify-content-between mt-4">
+        <div class="text-left">
+            <p>Total services: {{ total_services }}</p>
+        </div>
+        <div class="text-right">
+            <nav>
+                <ul class="pagination">
+                    {% if services.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="First">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ services.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in services.paginator.page_range %}
+                    <li class="page-item {% if services.number == i %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {% if services.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ services.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ services.paginator.num_pages }}" aria-label="Last">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- Service End -->
+
+{% endblock %}

@@ -15,6 +15,9 @@ from authority.views import manage_contact
 from authority.views import manage_fact
 from authority.views import manage_carousel
 from authority.views import manage_logo
+from authority.views import manage_sitesettings
+from authority.views import manage_brand
+from authority.views import manage_product
 
 
 urlpatterns = [
@@ -27,6 +30,9 @@ urlpatterns += [
     path('login/', manage_user.CustomLoginView.as_view(), name='login'),
     path('logout/',  manage_user.CustomLogoutView.as_view(), name='logout'),
     path('add_admin/', manage_user.AddAdminUserView.as_view(), name='add_admin'),
+    path('update_admin/<int:pk>/', manage_user.UpdateAdminUserView.as_view(), name='update_admin'),
+    path('reset-password/<int:user_id>/', manage_user.PasswordResetView.as_view(), name='reset_password'),
+    path('profile_list/', manage_user.ProfileListView.as_view(), name='profile_list'),
     path('delete_admin/<int:pk>/', manage_user.DeleteUserView.as_view(), name='delete_admin')
 ]
 
@@ -132,8 +138,37 @@ urlpatterns += [
 ]
 
 
+# Manage Site Settings
+urlpatterns += [
+    path('site-settings/', manage_sitesettings.SiteSettingsListView.as_view(), name='site_settings'),
+    path('site-settings/add/', manage_sitesettings.AddSiteSettingView.as_view(), name='add_site_setting'),
+    path('site-settings/<int:pk>/update/', manage_sitesettings.UpdateSiteSettingView.as_view(), name='update_site_setting'),
+    path('site-settings/<int:pk>/delete/', manage_sitesettings.SiteSettingDeleteView.as_view(), name='delete_site_setting'),
+]
 
+# Manage Brand
+urlpatterns +=[
+    path('brand-list/', manage_brand.BrandListView.as_view(), name='brand_list'),
+    path('update-brand/<int:pk>/', manage_brand.UpdateBrandView.as_view(), name='update_brand'),
+    path('add-brand/', manage_brand.AddBrandView.as_view(), name='add_brand'),
+    path('delete_brand/<int:pk>/', manage_brand.BrandDeleteView.as_view(), name='delete_brand'),
+]
 
+# Manage ProductCategory
+urlpatterns += [
+    path('product-category-list/', manage_product.ProductCategoryListView.as_view(), name='product_category_list'),
+    path('update-product-category/<int:pk>/', manage_product.UpdateProductCategoryView.as_view(), name='update_product_category'),
+    path('add-product-category/', manage_product.AddProductCategoryView.as_view(), name='add_product_category'),
+    path('delete-product-category/<int:pk>/', manage_product.DeleteProductCategoryView.as_view(), name='delete_product_category'),
+]
+
+# Manage Product
+urlpatterns += [
+    path('product-list/', manage_product.ProductListView.as_view(), name='product_list'),
+    path('update-product/<int:pk>/', manage_product.UpdateProductView.as_view(), name='update_product'),
+    path('add-product/', manage_product.AddProductView.as_view(), name='add_product'),
+    path('delete-product/<int:pk>/', manage_product.DeleteProductView.as_view(), name='delete_product'),
+]
 
 
 

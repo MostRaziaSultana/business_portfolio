@@ -1,4 +1,4 @@
-from .models import BusinessInfo,Logo,ContactMessage,Service,Blog,Project
+from .models import BusinessInfo,Logo,ContactMessage,Service,Blog,Project,SiteSettings,ProductCategory
 
 def businessinfo(request):
     return {
@@ -8,6 +8,16 @@ def businessinfo(request):
 def logo(request):
     return {
         'logo': Logo.objects.first(),
+    }
+
+def product_categories(request):
+    return {
+        'product_categories': ProductCategory.objects.all(),
+    }
+
+def site_settings(request):
+    return {
+        'site_settings': SiteSettings.objects.first(),
     }
 
 def last_messages(request):
