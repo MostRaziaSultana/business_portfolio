@@ -15,58 +15,80 @@
 
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="siteName" class="form-label">Site Name</label>
+                    <label for="siteName" class="form-label">Site Name <span class="text-danger">*</span></label>
                     {{ form.site_name|add_class:"form-control" }}
                 </div>
                 <div class="col-md-6">
-                    <label for="phone" class="form-label">Phone</label>
+                    <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
                     {{ form.phone|add_class:"form-control" }}
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                     {{ form.email|add_class:"form-control" }}
                 </div>
                 <div class="col-md-6">
-                    <label for="copyright_year" class="form-label">Copyright Year</label>
+                    <label for="copyright_year" class="form-label">Copyright Year <span class="text-danger">*</span></label>
                     {{ form.copyright_year|add_class:"form-control" }}
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="facebook_link" class="form-label">Facebook Link</label>
+                    <label for="facebook_link" class="form-label">Facebook Link (Optional)</label>
                     {{ form.facebook_link|add_class:"form-control" }}
                 </div>
                 <div class="col-md-6">
-                    <label for="instagram_link" class="form-label">Instagram Link</label>
+                    <label for="instagram_link" class="form-label">Instagram Link (Optional)</label>
                     {{ form.instagram_link|add_class:"form-control" }}
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <label for="youtube_link" class="form-label">YouTube Link</label>
+                    <label for="youtube_link" class="form-label">YouTube Link (Optional)</label>
                     {{ form.youtube_link|add_class:"form-control" }}
                 </div>
                 <div class="col-md-6">
-                    <label for="linkedin_link" class="form-label">LinkedIn Link</label>
+                    <label for="linkedin_link" class="form-label">LinkedIn Link (Optional)</label>
                     {{ form.linkedin_link|add_class:"form-control" }}
                 </div>
             </div>
 
             <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="messenger_link" class="form-label">Messenger Link (Optional)</label>
+                    {{ form.messenger_link|add_class:"form-control" }}
+                </div>
+                <div class="col-md-6">
+                    <label for="whatsapp" class="form-label">WhatsApp Number (Optional)</label>
+                    {{ form.whatsapp|add_class:"form-control" }}
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="twitter_link" class="form-label">Twitter Link (Optional)</label>
+                    {{ form.twitter_link|add_class:"form-control" }}
+                </div>
+                <div class="col-md-6">
+                    <label for="telegram_link" class="form-label">Telegram Link (Optional)</label>
+                    {{ form.telegram_link|add_class:"form-control" }}
+                </div>
+            </div>
+
+            <div class="row mb-4">
                 <div class="col">
-                    <label for="map_embed_location_link" class="form-label">Map Embed Location Link</label>
+                    <label for="map_embed_location_link" class="form-label">Map Embed Location Link (Optional)</label>
                     {{ form.map_embed_location_link|add_class:"form-control" }}
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col">
-                    <label for="address" class="form-label">Address</label>
+                    <label for="address" class="form-label">Address <span class="text-danger">*</span></label>
                     {{ form.address|add_class:"form-control" }}
                 </div>
             </div>

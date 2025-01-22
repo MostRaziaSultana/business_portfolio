@@ -19,17 +19,14 @@
         </div>
 
         <div class="row mb-4">
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
                 <label for="id_image" class="form-label">Image <span class="text-danger">*</span></label>
                 {{ form.image|add_class:"form-control" }}
             </div>
-            <div class="col-md-6">
-                {% if form.instance.image %}
-                <div class="mt-2">
-                    <p>Current Image:</p>
-                    <img src="{{ form.instance.image.url }}" alt="{{ form.instance.title }}" class="img-fluid" style="max-width: 100px;">
-                </div>
-                {% endif %}
+
+            <div class="col-12 col-md-6">
+                <label for="id_in_homepage" class="form-label">Feature on Homepage <span class="text-danger">*</span></label>
+                {{ form.in_homepage|add_class:"form-control" }}
             </div>
         </div>
 
