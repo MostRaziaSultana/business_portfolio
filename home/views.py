@@ -91,7 +91,7 @@ def projects(request):
 
 
 def blog_details(request, id):
-    blog_details = Blog.objects.first()
+    blog_details = get_object_or_404(Blog, id=id)
     blogs = Blog.objects.all()
     services = Service.objects.all()
     return render(request, 'blog_details.html', {
