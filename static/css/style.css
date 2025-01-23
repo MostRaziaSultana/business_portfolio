@@ -451,6 +451,9 @@
 .btn.btn-primary {
     color: #FFFFFF;
 }
+.text-highlight{
+    color:#4e342e!important;
+}
 
 .btn-square {
     width: 38px;
