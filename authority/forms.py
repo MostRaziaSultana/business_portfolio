@@ -133,7 +133,13 @@ class AddAdminUserForm(forms.ModelForm):
 #             user.save()
 #         return user
 class UpdateAdminUserForm(forms.ModelForm):
-    full_name = forms.CharField(max_length=150, required=False, label="Full Name")
+    full_name = forms.CharField(
+        max_length=150,
+        required=False,
+        label="Full Name",
+        help_text="Enter both first and last name, or leave blank."
+    )
+
     class Meta:
         model = User
         fields = ['username', 'email', 'full_name']
@@ -142,30 +148,32 @@ class UpdateAdminUserForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if self.instance:
             # Pre-fill full_name with first_name and last_name
-            self.fields['full_name'].initial = f"{self.instance.first_name} {self.instance.last_name}"
+            self.fields['full_name'].initial = f"{self.instance.first_name} {self.instance.last_name}".strip()
 
     def clean_full_name(self):
-        full_name = self.cleaned_data.get('full_name')
-        if full_name:
-            if len(full_name.split(' ')) < 2:
-                raise forms.ValidationError("Please enter both first and last names.")
+        full_name = self.cleaned_data.get('full_name', '').strip()
+        if full_name and len(full_name.split(' ')) < 2:
+            raise forms.ValidationError("Please enter both first and last names or leave blank.")
         return full_name
 
     def save(self, commit=True):
         user = super().save(commit=False)
 
-        # Preserve the existing password
         user.password = self.instance.password
 
-        full_name = self.cleaned_data.get('full_name')
+        full_name = self.cleaned_data.get('full_name', '').strip()
         if full_name:
             full_name_split = full_name.split(' ', 1)
             user.first_name = full_name_split[0]
             user.last_name = full_name_split[1] if len(full_name_split) > 1 else ""
+        else:
+            user.first_name = ""
+            user.last_name = ""
 
         if commit:
             user.save()
         return user
+
 
 class ResetPasswordForm(forms.Form):
     new_password = forms.CharField(widget=forms.PasswordInput, label='New Password')
